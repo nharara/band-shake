@@ -91,3 +91,28 @@
   margin: 16px;
   padding: 16px;
 }
+
+.card-show-page-booking {
+  margin: 16px;
+  padding: 16px;
+  height: 50%
+}
+
+#booking-title {
+  text-align: center;
+  font-size: 32px;
+  height: 80px;
+}
+
+#booking-date {
+  text-align: center;
+  font-size: 24px;
+  height: 80px;
+}
+
+#bookit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+}
