@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_031523) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_060214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,17 +21,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_031523) do
     t.bigint "offering_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["offering_id"], name: "index_bookings_on_offering_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "offerings", force: :cascade do |t|
     t.integer "price"
-    t.datetime "initial_date"
-    t.datetime "final_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "availability"
+    t.string "instrument"
     t.index ["user_id"], name: "index_offerings_on_user_id"
   end
 
@@ -46,7 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_031523) do
     t.string "full_name"
     t.integer "age"
     t.string "phone_number"
-    t.string "instrument"
     t.text "experience"
     t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
