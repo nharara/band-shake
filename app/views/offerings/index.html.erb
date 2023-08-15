@@ -3,19 +3,21 @@
   <%= render "form" %>
   <div class="cards">
     <% @offerings.each do |offering| %>
-      <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip mt-5">
+        <%= image_tag "music.jpg" %>
+        <%# <img src="app/assets/images/pexels-wendy-wei-1714354.jpg" /> %>
         <div class="card-trip-infos">
           <div>
-            <h2>Title here</h2>
-            <p>Short description here!</p>
+            <h2><%= offering.user.full_name %></h2>
+            <p><%= offering.instrument.capitalize %></p>
           </div>
-          <h2 class="card-trip-pricing">£<%= offering.price %></h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <div>
+            <p><i class="fa-solid fa-location-dot mb-2"></i> <%= offering.user.city %></p>
+            <h2 class="card-trip-pricing"><i class="fa-solid fa-yen-sign"></i><%= offering.price %></h2>
+          </div>
         </div>
+        <%= link_to "", offering_path(offering), class: 'card-trip-link' %>
       </div>
-      <%= link_to offering_path(offering) do %>
-      <% end %>
     <% end %>
   </div>
 </div>
