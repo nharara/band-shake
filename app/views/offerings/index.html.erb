@@ -1,9 +1,20 @@
 <div class="container mt-3">
   <h1>Musician</h1>
+  <%= render "form" %>
   <div class="cards">
     <% @offerings.each do |offering| %>
-      <%= link_to offering_path(oferring) do %>
-        <%= oferring.name %>
+      <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <h2>Title here</h2>
+            <p>Short description here!</p>
+          </div>
+          <h2 class="card-trip-pricing">£<%= offering.price %></h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+      <%= link_to offering_path(offering) do %>
       <% end %>
     <% end %>
   </div>
