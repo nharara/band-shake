@@ -9,10 +9,59 @@ puts "destroying users"
 
 User.destroy_all
 
-puts "creating users"
+puts "creating users, offerings and bookings"
 
-User.create(email: 'efrenrfranco@gmail.com', password: 'franco')
-User.create(email: '555nhara@gmail.com', password: 'hara')
-User.create(email: 'jadepeck27@gmail.com', password: 'taron')
+User.create(
+  full_name: 'Efren Franco',
+  age: 32,
+  phone_number: '080-1233-4562',
+  city: 'Kyoto',
+  experience: 'played the drums with Linkin Park in 2017',
+  email: 'efrenrfranco@gmail.com',
+  password: 'franco'
+)
+User.create(
+  full_name: 'Nozomu Hara',
+  age: 35,
+  phone_number: '080-1233-4563',
+  city: 'Yotsuya',
+  experience: 'played the electric guitar with Modern Baseball in 2019',
+  email: '555nhara@gmail.com',
+  password: 'hara'
+)
+User.create(
+  full_name: 'PJ Taron',
+  age: 28,
+  phone_number: '080-1233-4565',
+  city: 'Ootaku',
+  experience: 'played the acoustic guitar with West Life in 2017',
+  email: 'jadepeck27@gmail.com',
+  password: 'taron'
+)
 
-puts "3 users created"
+User.all.each_with_index do |user, index|
+  instruments = ['drums', 'electric guitar', 'acoustic guitar']
+  thousand = rand(5..10)
+  offering = Offering.new(
+    price: thousand * 1000,
+    availability: 'Monday to Friday from 8:00 to 0:00',
+    instrument: instruments[index]
+  )
+  offering.user = user
+  offering.save
+end
+
+Offering.all.each do |offering|
+  day = rand(1..30)
+  hour1 = rand(8..12)
+  hour2 = rand(16..23)
+  booking = Booking.new(
+    start_date: DateTime.new(2023, 9, day, hour1),
+    end_date: DateTime.new(2023, 9, day, hour2)
+  )
+  booking.offering = offering
+  booking.offering.user = offering.user
+  booking.save
+end
+
+puts "3 users, offerings and bookings created"
