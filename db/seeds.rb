@@ -5,38 +5,40 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "destroying users"
+puts "destroying users, offerings and bookings"
 
 User.destroy_all
 
 puts "creating users, offerings and bookings"
 
-User.create(
+User.create!(
   full_name: 'Efren Franco',
   age: 32,
   phone_number: '080-1233-4562',
   city: 'Kyoto',
   experience: 'played the drums with Linkin Park in 2017',
   email: 'efrenrfranco@gmail.com',
-  password: 'franco'
+  password: 'efrenfranco'
 )
-User.create(
+
+User.create!(
   full_name: 'Nozomu Hara',
   age: 35,
   phone_number: '080-1233-4563',
   city: 'Yotsuya',
   experience: 'played the electric guitar with Modern Baseball in 2019',
   email: '555nhara@gmail.com',
-  password: 'hara'
+  password: 'nozomuhara'
 )
-User.create(
+
+User.create!(
   full_name: 'PJ Taron',
   age: 28,
   phone_number: '080-1233-4565',
   city: 'Ootaku',
   experience: 'played the acoustic guitar with West Life in 2017',
   email: 'jadepeck27@gmail.com',
-  password: 'taron'
+  password: 'pjtaron'
 )
 
 User.all.each_with_index do |user, index|
@@ -60,7 +62,7 @@ Offering.all.each do |offering|
     end_date: DateTime.new(2023, 9, day, hour2)
   )
   booking.offering = offering
-  booking.offering.user = offering.user
+  booking.user = offering.user
   booking.save
 end
 
