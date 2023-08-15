@@ -1,0 +1,10 @@
+<div class="container mt-3">
+  <h1>Musician</h1>
+  <div class="cards">
+    <% @offerings.each do |offering| %>
+      <%= link_to offering_path(offerring) do %>
+        <%= offerring.name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
