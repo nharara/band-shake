@@ -53,6 +53,7 @@ User.all.each_with_index do |user, index|
   offering.save
 end
 
+images = ["https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/141376/pexels-photo-141376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
 Offering.all.each do |offering|
   day = rand(1..30)
   hour1 = rand(8..12)
@@ -65,5 +66,12 @@ Offering.all.each do |offering|
   booking.user = offering.user
   booking.save
 end
+
+  file = URI.open(images[2])
+  file1 = URI.open(images[0])
+  file2 = URI.open(images[1])
+  Offering.first.photo.attach(io:file, filename:"offering.jpeg", content_type:"image/jpeg")
+  Offering.second.photo.attach(io:file1, filename:"offering.jpeg", content_type:"image/jpeg")
+  Offering.last.photo.attach(io:file2, filename:"offering.jpeg", content_type:"image/jpeg")
 
 puts "3 users, offerings and bookings created"
