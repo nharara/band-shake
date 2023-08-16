@@ -112,6 +112,8 @@
   top: 50%;
 }
 
-#button-form {
-  text-align: center;
+.button-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
