@@ -2,13 +2,13 @@
   <%= simple_form_for [@offering, @booking] do |f| %>
     <%= f.input :start_date, as: :datetime, discard_minute: true %>
     <%= f.input :end_date,  as: :datetime, discard_minute: true %>
-    <button class='btn btn-success my-3 p-2'>get estimate</button>
-
-      <%if @offering.user != current_user %>
-    <div class="">
-      <%= f.input :details %>
-        <%= f.submit class: "btn btn-primary" %>
+    <div class="button-form"><button class='btn btn-success my-3 p-2'>Get Estimate</button> </div>
+    <%if @offering.user != current_user %>
+      <div class="">
+        <%= f.input :details %>
+        <div class="button-form"><%= f.submit class: "btn btn-primary" %>
+        </div>
       <% end %>
-
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+</div>
