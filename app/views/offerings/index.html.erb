@@ -1,10 +1,14 @@
 <div class="container mt-3">
   <h1>Musician</h1>
-  <%= render "form" %>
+  <%= render "search" %>
   <div class="cards">
     <% @offerings.each do |offering| %>
       <div class="card-trip mt-5">
-        <%= image_tag "music.jpg" %>
+        <% if offering.photo.attached? %>
+          <%= cl_image_tag offering.photo.key %>
+        <% else %>
+          <%= image_tag "music.jpg" %>
+        <% end %>
         <%# <img src="app/assets/images/pexels-wendy-wei-1714354.jpg" /> %>
         <div class="card-trip-infos">
           <div>

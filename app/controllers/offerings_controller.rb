@@ -1,6 +1,7 @@
 class OfferingsController < ApplicationController
   def index
     @offerings = Offering.all
+    @offering = Offering.new
   end
 
   def show
@@ -17,6 +18,6 @@ class OfferingsController < ApplicationController
   private
 
   def offering_params
-    params.require(:offering).permit(:price, :initial_date, :final_date)
+    params.require(:offering).permit(:price, :availability, :instrument, :photo)
   end
 end
