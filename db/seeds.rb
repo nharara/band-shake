@@ -59,7 +59,9 @@ Offering.all.each do |offering|
   hour2 = rand(16..23)
   booking = Booking.new(
     start_date: DateTime.new(2023, 9, day, hour1),
-    end_date: DateTime.new(2023, 9, day, hour2)
+    end_date: DateTime.new(2023, 9, day, hour2),
+    details: "we are a band of four members that play folk rock, and we are looking someone
+    like you to join us for the next 4 months"
   )
   booking.offering = offering
   booking.user = offering.user
