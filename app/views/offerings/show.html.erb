@@ -1,8 +1,6 @@
 <div class="container mt-3">
   <h1>This is the Offering Headline</h1>
-  <%= render 'shared/new_booking_form' %>
 </div>
-
 <div class="container show-main mt-3">
   <div>
     <div class="cards-show">
@@ -34,8 +32,7 @@
   <div class="card-trip card-show-page-booking">
     <div class="col-12">
       <h2 id= "booking-title">Make a booking</h2>
-      <p id="booking-date">Select date</p>
-      <div class="btn btn-primary" id="bookit-button" style="text-align: center"> Get Estimate </div>
+      <%= render 'shared/new_booking_form' %>
     </div>
   </div>
 </div>
