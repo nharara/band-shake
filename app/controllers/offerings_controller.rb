@@ -5,6 +5,7 @@ class OfferingsController < ApplicationController
   end
 
   def show
+    @offerings = Offering.all
     @offering = Offering.find(params[:id])
     @booking = Booking.new
   end
@@ -13,16 +14,6 @@ class OfferingsController < ApplicationController
     @offering = Offering.new
   end
 
-  def create
-    @offering = Offering.find(params[:offering_id])
-    @booking = Booking.new(offering_params)
-    @booking.offering = @offering
-    if @offering.save
-      redirect_to restaurant_path(@offering)
-    else
-      render :new, status: :unprocessible_entity
-    end
-  end
 
   private
 
