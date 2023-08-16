@@ -1,5 +1,5 @@
 <%= simple_form_for [@offering, @booking] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <div id="button-form"> <%= f.submit "Get Estimate", class: "btn btn-primary" %> </div>
 <% end %>
