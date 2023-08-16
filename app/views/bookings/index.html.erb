@@ -1,0 +1,39 @@
+<div class = "container pt-3">
+  <ul class="list-inline tabs-underlined">
+    <li>
+      <a href="#" class="tab-underlined">My Gigs</a>
+    </li>
+    <li>
+      <a href="#" class="tab-underlined active">My Bookings</a>
+    </li>
+  </ul>
+  <div class="container-table">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card text-center shadow">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+              <div class="card border-0"></div>
+              <div class="card border-0">Name</div>
+              <div class="card border-0">Start Date</div>
+              <div class="card border-0">End Date</div>
+              <div class="card border-0">Status</div>
+            </li>
+            <% @bookings.each do |booking| %>
+              <li class="list-group-item d-flex justify-content-between">
+                <div class="img-container" style="max-width 25%">
+                  <img src="https://example.com/image.jpg" class="img-fluid">
+                </div>
+                <div class="card border-0"><%= booking.user.full_name %></div>
+                <div class="card border-0"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
+                <div class="card border-0"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
+                <div class="btn btn-primary border-0"><%= booking.status %></div>
+              </li class="list-group-item">
+              <li>Details: <%= booking.details %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
