@@ -15,24 +15,24 @@
               </div>
               <h2 class="card-trip-pricing">From <%= @offering.price %>$</h2>
             </div>
-
           </div>
-          <h2 class="card-trip-pricing">From <%= @offering.price %>$</h2>
         </div>
       </div>
     </div>
+    <div class="card-trip card-show-page">
+      <ul>
+        <li>Location: <%= @offering.user.city %></li>
+        <li>Instruments: <%= @offering.instrument %></li>
+        <li>Experience: <%= @offering.user.experience %></li>
+        <li>Availabilty: <%= @offering.availability %></li>
+        <li>Email: <%= @offering.user.email %></li>
+      </ul>
+    </div>
   </div>
-  <div class="card-trip card-show-page">
-    <ul>
-      <li>Location: <%= @offering.user.city %></li>
-      <li>Instruments: <%= @offering.instrument %></li>
-      <li>Experience: <%= @offering.user.experience %></li>
-      <li>Availabilty: <%= @offering.availability %></li>
-      <li>Email: <%= @offering.user.email %></li>
-    </ul>
+  <div class="card-trip card-show-page-booking">
+    <div class="col-12">
+      <h2 id= "booking-title">Make a booking</h2>
+      <%= render 'shared/new_booking_form' %>
+    </div>
   </div>
-</div>
-<div class="col-6">
-  <h2 id= "booking-title">Make a booking</h2>
-  <%= render 'shared/new_booking_form' %>
 </div>
