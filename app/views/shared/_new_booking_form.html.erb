@@ -1,11 +1,10 @@
-
 <div class="container bg-light p-3">
   <%= simple_form_for [@offering, @booking] do |f| %>
-  <%= f.input :start_date, as: :datetime, discard_minute: true %>
-  <%= f.input :end_date,  as: :datetime, discard_minute: true %>
-  <div class="">
-    <%= f.input :details %>
-    <%= f.submit :submit, class: "btn btn-primary" %>
+    <%= f.input :start_date, as: :datetime, discard_minute: true %>
+    <%= f.input :end_date,  as: :datetime, discard_minute: true %>
+    <div class="">
+      <%= f.input :details %>
+      <div id="button-form"><%= f.submit "Get Estimate", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-</div>
