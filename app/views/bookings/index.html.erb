@@ -28,7 +28,8 @@
                 <div class="card border-0"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
                 <div class="card border-0"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
                 <div class="btn btn-primary border-0"><%= booking.status %></div>
-              </li>
+              </li class="list-group-item">
+              <li>Details: <%= booking.details %></li>
             <% end %>
           </ul>
         </div>
