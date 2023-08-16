@@ -1,3 +1,41 @@
 <div class="container mt-3">
-<h1>This is the Offering Headline</h1>
+  <h1>This is the Offering Headline</h1>
+  <%= render 'shared/new_booking_form' %>
+</div>
+
+<div class="container show-main mt-3">
+  <div>
+    <div class="cards-show">
+      <div class="row">
+        <div class="col">
+          <div class="card-trip card-show-page">
+            <img src="https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2015/03/youtube-logo2.jpg" />
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= @offering.user.full_name %></h2>
+                <%= @offering.user.experience %>
+              </div>
+              <h2 class="card-trip-pricing">From <%= @offering.price %>$</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-trip card-show-page">
+      <ul>
+        <li>Location: <%= @offering.user.city %></li>
+        <li>Instruments: <%= @offering.instrument %></li>
+        <li>Experience: <%= @offering.user.experience %></li>
+        <li>Availabilty: <%= @offering.availability %></li>
+        <li>Email: <%= @offering.user.email %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-trip card-show-page-booking">
+    <div class="col-12">
+      <h2 id= "booking-title">Make a booking</h2>
+      <p id="booking-date">Select date</p>
+      <div class="btn btn-primary" id="bookit-button" style="text-align: center"> Get Estimate </div>
+    </div>
+  </div>
 </div>
