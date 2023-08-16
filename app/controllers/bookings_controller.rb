@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    raise
     @booking = Booking.new(booking_params)
     @offering = Offering.find(params[:offering_id])
     @booking.offering = @offering
