@@ -24,7 +24,7 @@
                 <div class="img-container" style="max-width 25%">
                   <img src="https://example.com/image.jpg" class="img-fluid">
                 </div>
-                <div class="card border-0"><%= booking.user.full_name %></div>
+                <div class="card border-0"><%= booking.offering.user.full_name %></div>
                 <div class="card border-0"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
                 <div class="card border-0"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
                 <div class="btn btn-warning border-0"><%= booking.status %></div>
