@@ -5,6 +5,19 @@
   <div class="card border-0"><%= booking.offering.user.full_name %></div>
   <div class="card border-0"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
   <div class="card border-0"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
-  <div class="btn btn-warning border-0"><%= booking.status %></div>
+  <% if booking.user == current_user && booking.pending? %>
+    <div class="d-flex">
+      <%= simple_form_for booking do |f| %>
+        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+        <%= f.submit 'Accept', class: 'btn btn-info' %>
+      <% end %>
+      <%= simple_form_for booking do |f| %>
+        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+        <%= f.submit 'Deny', class: 'btn btn-light' %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="btn btn-light border-0"><%= booking.status %></div>
+  <% end %>
 </li>
 <li class="list-group-item">Details: <%= booking.details %></li>
