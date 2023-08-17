@@ -1,30 +1,61 @@
-<div class = "container-bookings pt-3">
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="#" class="tab-underlined">My Gigs</a>
-    </li>
-    <li>
-      <a href="#" class="tab-underlined active">My Bookings</a>
-    </li>
-  </ul>
-  <div class="container-table">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card text-center shadow">
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between">
-              <div class="card border-0"></div>
-              <div class="card border-0">Name</div>
-              <div class="card border-0">Start Date</div>
-              <div class="card border-0">End Date</div>
-              <div class="card border-0">Status</div>
-            </li>
-            <% @bookings.each do |booking| %>
-              <%= render 'booking', booking: booking %>
-            <% end %>
-          </ul>
+<nav>
+  <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">My Bookings</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">My Gigs</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <%# This is the beginning div of the My Bookings block of content %>
+    <div class = "container-bookings pt-3">
+      <div class="container-table">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card text-center shadow">
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between">
+                  <div class="card border-0"></div>
+                  <div class="card border-0">Name</div>
+                  <div class="card border-0">Start Date</div>
+                  <div class="card border-0">End Date</div>
+                  <div class="card border-0">Status</div>
+                </li>
+                <% @bookings.each do |booking| %>
+                  <%= render 'booking', booking: booking %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# This is the end div of the My Bookings block of content %>
+  </div>
+  <%# This is a separator comment to make things easier to see%>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <%# The content for the second block of info (My Gigs) is from here%>
+    <div class = "container-bookings pt-3">
+      <div class="container-table">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card text-center shadow">
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between">
+                  <div class="card border-0"></div>
+                  <div class="card border-0">Name</div>
+                  <div class="card border-0">Start Date</div>
+                  <div class="card border-0">End Date</div>
+                  <div class="card border-0">Status</div>
+                </li>
+                <% gigs.each do |gig| %>
+                  <%= render 'booking', booking: gig %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<%# This is the end of the second block of info (My Gigs) %>
