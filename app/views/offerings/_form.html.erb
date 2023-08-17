@@ -1,5 +1,8 @@
-<%= simple_form_for @offering do |f| %>
+<%= simple_form_for offering do |f| %>
+  <%= f.input :instrument, collection: ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Clarinet']%>
   <%= f.input :price %>
+  <%= f.input :availability %>
+  <%= f.input :url %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit "Search", class: 'btn btn-primary mt-2' %>
+  <%= f.submit "Submit", class: 'btn btn-primary mt-2' %>
 <% end %>

@@ -15,10 +15,20 @@ class OfferingsController < ApplicationController
     @offering = Offering.new
   end
 
+  def create
+    @offerings = Offering.all
+    @offering = Offering.new(offering_params)
+    @offering.user = current_user
+    if @offering.save
+      redirect_to offering_path(@offering)
+    else
+      render :index, status: :unprocessable_entity
+    end
+  end
 
   private
 
   def offering_params
-    params.require(:offering).permit(:price, :availability, :instrument, :photo)
+    params.require(:offering).permit(:price, :availability, :instrument, :photo, :url)
   end
 end
