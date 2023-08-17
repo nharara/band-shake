@@ -1,0 +1,19 @@
+<li class="list-group-item d-flex justify-content-between">
+  <div class="img-container" style="max-width 25%">
+    <img src="https://example.com/image.jpg" class="img-fluid">
+  </div>
+  <div class="card border-0"><%= gig.user.full_name %></div>
+  <div class="card border-0"><%= gig.start_date.strftime("%b %d %-l%P") %></div>
+  <div class="card border-0"><%= gig.end_date.strftime("%b %d %-l%P") %></div>
+  <div class="d-flex">
+    <%= simple_form_for gig do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+      <%= f.submit 'Accept', class: 'btn btn-info' %>
+    <% end %>
+    <%= simple_form_for gig do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+      <%= f.submit 'Deny', class: 'btn btn-light' %>
+    <% end %>
+  </div>
+</li>
+<li class="list-group-item">Details: <%= gig.details %></li>
