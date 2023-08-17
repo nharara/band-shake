@@ -14,6 +14,11 @@
     <ul class="navbar-nav me-auto">
       <% if user_signed_in? %>
         <li class="nav-item d-flex align-items-center fw-light me-2 text-nowrap">
+          <%= link_to "My Gigs", bookings_path, class: "link-index" %>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item d-flex align-items-center fw-light me-2 text-nowrap">
           Hi, <%= current_user.full_name.split.first %>
         </li>
       <% end %>
