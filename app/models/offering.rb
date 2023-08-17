@@ -11,4 +11,14 @@ class Offering < ApplicationRecord
   def change_url
     self.url = url.gsub(/watch\?v=/, 'embed/')
   end
+
+  include PgSearch::Model
+  pg_search_scope :search,
+                  against: [ :instrument ],
+                  associated_against: {
+                    user: [ :city ]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end
