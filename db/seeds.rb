@@ -1,3 +1,36 @@
+require 'faker'
+require 'open-uri'
+require 'nokogiri'
+puts "destroying users, offerings and bookings"
+
+User.destroy_all
+
+puts "creating users, offerings and bookings"
+
+20.times do
+  user = User.create!(
+  email: Faker::Internet.email,
+  password: '123123', # needs to be 6 digits,
+  full_name: Faker::Name.name,
+  phone_number: Faker::Config.locale = 'en-CA',
+  city: ['Kyoto', 'Tokyo', 'Yokohama', 'Nagoya', 'Osaka'].sample,
+  experience: ['An experienced trombonist and music teacher with 14 years of performance experience and eight years in music education. Studied the principles of trombone performance with Wycliffe Gordon while attending Emory University and performing with the Emory & Henry Marching Band.', 'A classical musician and graduate of The Juilliard School with eight years of experience playing the piano in large concert settings with over 20K attendees. A proven track record of performing with symphony orchestras and premiere music groups, including the Philadelphia Orchestra.', 'Enthusiastic session musician, seeking position with Jerry Norwater Music. As First Violin in the Solano Youth Orchestra, performed La Forza Del Destino Overture by G. Verdi to favorable reviews in the Daily Republic. Commended by music director for hard work and dedication.', 'A dedicated session artist with over 5 years of live performance experience seeks to join Kevin Costner Music to advance my skills while providing a great music experience to the audience. Developing a career with both Orchestra and Chamber music.', 'Dynamic teacher with over 8 years of experience in teaching high-school and bachelor’s level music students seeks to join The Juilliard School as a senior music teacher. In my previous position, I taught a range of subjects such as music composition, live performance, instruments, and sound engineering.'].sample,
+  # add any additional attributes you have on your model
+)
+  # gender options: 'all' or 'male' or 'female'
+  gender = 'all'
+  # age options: 'all' or '12-18' or '19-25' or '26-35' or '35-50' or '50+'
+  age = '19-40'
+  # ethnicity options: 'all' or 'asian' or 'white' or 'black' or 'indian' or 'middle_eastern' or 'latino_hispanic'
+  ethnicity = 'all'
+
+  url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
+  json = URI.open(url).read
+  src = JSON.parse(json)['src']
+  photo_url = "https://this-person-does-not-exist.com#{src}"
+  file = URI.open(photo_url)
+  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+end
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,13 +38,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "destroying users, offerings and bookings"
 
-User.destroy_all
-
-puts "creating users, offerings and bookings"
-
-User.create!(
+user = User.create!(
   full_name: 'Efren Franco',
   age: 32,
   phone_number: '080-1233-4562',
@@ -20,8 +48,11 @@ User.create!(
   email: 'efrenrfranco@gmail.com',
   password: 'efrenfranco'
 )
+file = URI.open("https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+user.photo.attach(io: file, filename: "1.jpeg", content_type: "image/jpeg")
+user.save
 
-User.create!(
+user = User.create!(
   full_name: 'Nozomu Hara',
   age: 35,
   phone_number: '080-1233-4563',
@@ -30,8 +61,12 @@ User.create!(
   email: '555nhara@gmail.com',
   password: 'nozomuhara'
 )
+file = URI.open("https://avatars.githubusercontent.com/u/135594820?v=4")
+user.photo.attach(io: file, filename: "2.jpeg", content_type: "image/jpeg")
+user.save
 
-User.create!(
+
+user = User.create!(
   full_name: 'PJ Taron',
   age: 28,
   phone_number: '080-1233-4565',
@@ -40,6 +75,9 @@ User.create!(
   email: 'jadepeck27@gmail.com',
   password: 'pjtaron'
 )
+file = URI.open("https://avatars.githubusercontent.com/u/122541242?v=4")
+user.photo.attach(io: file, filename: "3.jpeg", content_type: "image/jpeg")
+user.save
 
 User.all.each_with_index do |user, index|
   instruments = ['drums', 'electric guitar', 'acoustic guitar']

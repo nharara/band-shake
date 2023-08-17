@@ -9,6 +9,6 @@ class Offering < ApplicationRecord
   before_create :change_url
 
   def change_url
-    self.url = url.gsub(/watch\?v=/, 'embed/')
+    self.url = url&.gsub(/watch\?v=/, 'embed/')
   end
 end
