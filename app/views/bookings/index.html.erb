@@ -47,7 +47,7 @@
                   <div class="card border-0">End Date</div>
                   <div class="card border-0">Status</div>
                 </li>
-                <% gigs.each do |gig| %>
+                <% current_user.gigs.each do |gig| %>
                   <%= render 'booking', booking: gig %>
                 <% end %>
               </ul>
