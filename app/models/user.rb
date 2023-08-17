@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :offerings, dependent: :destroy
+  has_many :gigs, through: :offerings, source: :bookings
+  has_many :bookings
 end
