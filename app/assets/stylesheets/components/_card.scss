@@ -94,9 +94,11 @@
 }
 
 .card-show-page-booking {
+  display: flex;
+  align-items:flex-start;
   margin: 16px;
   padding: 16px;
-  height: 80%
+  flex-wrap: wrap;
 }
 
 #booking-title {

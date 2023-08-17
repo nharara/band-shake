@@ -1,14 +1,26 @@
-<div class="container bg-light p-3">
+<div
+  class="container bg-light p-3"
+  data-controller='estimate'
+  data-estimate-price-value='<%= @offering.price %>'
+  >
   <%= simple_form_for [@offering, @booking] do |f| %>
-    <%= f.input :start_date, as: :datetime, discard_minute: true %>
-    <%= f.input :end_date,  as: :datetime, discard_minute: true %>
-    <div class="button-form"><button class='btn btn-success my-3 p-2'>Get Estimate</button> </div>
+    <%= f.input :start_date, as: :string, input_html: {data: { controller: "datepicker", "estimate-target" => 'start' }} %>
+    <%= f.input :end_date,  as: :string, input_html: {data: { controller: "datepicker", "estimate-target" => 'end' }} %>
+    <button class='btn btn-success my-3 p-2' data-action='click->estimate#total'>
+      Get Estimate
+    </button>
+
+    <div data-estimate-target='estimateBtn'
+    class='bg-success rounded text-center'>
+      <h5 class='p-3 my-3'>Your estimate price for this booking</h5>
+    </div>
+
     <%if @offering.user != current_user %>
-      <div class="">
-        <%= f.input :details %>
-        <div class="button-form"><%= f.submit class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      <%= f.input :details %>
+      <div class="button-form">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
     <% end %>
-  </div>
+
+  <% end %>
 </div>
