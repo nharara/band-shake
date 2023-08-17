@@ -5,7 +5,7 @@
   <div class="card border-0"><%= booking.offering.user.full_name %></div>
   <div class="card border-0"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
   <div class="card border-0"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
-  <% if booking.user == current_user && booking.pending? %>
+  <% if booking.offering.user == current_user && booking.pending? %>
     <div class="d-flex">
       <%= simple_form_for booking do |f| %>
         <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
