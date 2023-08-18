@@ -7,7 +7,7 @@
 
 .card-trip {
   overflow: hidden;
-  background: white;
+  background: $white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 8px;
@@ -38,6 +38,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  background-color: $white;
 }
 
 .card-trip-infos .card-trip-user {
@@ -47,10 +48,11 @@
   width: 40px;
 }
 
-.cards {
+.cards-index {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+
 }
 
 // Smallest device
@@ -95,7 +97,7 @@
 
 .card-show-page-booking {
   display: flex;
-  align-items:flex-start;
+  align-items: flex-start;
   margin: 16px;
   padding: 16px;
   flex-wrap: wrap;
@@ -118,4 +120,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://i.redd.it/p8tohyn245b61.png');
+  background-color: $blue;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  /* Ensure the background covers the entire viewport height */
+}
+
+.container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+  border: 0.5px solid white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 40px;
+  margin-top: 20px;
 }
