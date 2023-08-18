@@ -12,6 +12,7 @@ class OfferingsController < ApplicationController
     @offering = Offering.find(params[:id])
     @booking = Booking.new
     @reviews = @offering.reviews
+    @rating = @reviews.empty? ? "no ratings yet" : avg_rating.to_s
   end
 
   def new
@@ -33,5 +34,14 @@ class OfferingsController < ApplicationController
 
   def offering_params
     params.require(:offering).permit(:price, :availability, :instrument, :photo, :url)
+  end
+
+  def avg_rating
+    rating = []
+
+    @reviews.each do |review|
+      rating << review.rating
+    end
+    rating.sum.to_f / rating.count
   end
 end

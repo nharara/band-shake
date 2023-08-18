@@ -76,17 +76,17 @@ pj = User.create!(
 file = URI.open("https://avatars.githubusercontent.com/u/122541242?v=4")
 pj.photo.attach(io: file, filename: "3.jpeg", content_type: "image/jpeg")
 
-User.all.each do
-  instruments = ['drums', 'electric guitar', 'acoustic guitar', 'piano', 'violin', 'bass', 'vocals']
-  thousand = rand(20..30)
-  offering = Offering.new(
-    price: thousand * 1000,
-    availability: 'Monday to Friday from 8:00 to 0:00',
-    instrument: instruments.sample
-  )
-  offering.user = User.all.sample
-  offering.save
-end
+# User.all.each do
+#   instruments = ['drums', 'electric guitar', 'acoustic guitar', 'piano', 'violin', 'bass', 'vocals']
+#   thousand = rand(20..30)
+#   offering = Offering.new(
+#     price: thousand * 1000,
+#     availability: 'Monday to Friday from 8:00 to 0:00',
+#     instrument: instruments.sample
+#   )
+#   offering.user = User.all.sample
+#   offering.save
+# end
 
 # images = ["https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/141376/pexels-photo-141376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
 # Offering.all.each do |offering|
