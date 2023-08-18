@@ -1,11 +1,15 @@
-#offerwrapper{
+#offerwrapper {
   position: relative;
   min-width: 400px;
 }
 
-#offeringform{
+#offeringform {
   position: absolute;
   z-index: 1;
   min-width: 400px;
-  background-color: antiquewhite;
+  background-color: #e1e1e1f2;
+}
+
+.form-card {
+  border-radius: 8px;
 }
