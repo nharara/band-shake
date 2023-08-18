@@ -5,18 +5,19 @@ puts "destroying users, offerings and bookings"
 
 User.destroy_all
 
-puts "creating users, offerings and bookings"
+puts "creating users"
 
 20.times do
   user = User.create!(
-  email: Faker::Internet.email,
-  password: '123123', # needs to be 6 digits,
-  full_name: Faker::Name.name,
-  phone_number: Faker::Config.locale = 'en-CA',
-  city: ['Kyoto', 'Tokyo', 'Yokohama', 'Nagoya', 'Osaka'].sample,
-  experience: ['An experienced trombonist and music teacher with 14 years of performance experience and eight years in music education. Studied the principles of trombone performance with Wycliffe Gordon while attending Emory University and performing with the Emory & Henry Marching Band.', 'A classical musician and graduate of The Juilliard School with eight years of experience playing the piano in large concert settings with over 20K attendees. A proven track record of performing with symphony orchestras and premiere music groups, including the Philadelphia Orchestra.', 'Enthusiastic session musician, seeking position with Jerry Norwater Music. As First Violin in the Solano Youth Orchestra, performed La Forza Del Destino Overture by G. Verdi to favorable reviews in the Daily Republic. Commended by music director for hard work and dedication.', 'A dedicated session artist with over 5 years of live performance experience seeks to join Kevin Costner Music to advance my skills while providing a great music experience to the audience. Developing a career with both Orchestra and Chamber music.', 'Dynamic teacher with over 8 years of experience in teaching high-school and bachelor’s level music students seeks to join The Juilliard School as a senior music teacher. In my previous position, I taught a range of subjects such as music composition, live performance, instruments, and sound engineering.'].sample,
-  # add any additional attributes you have on your model
-)
+    email: Faker::Internet.email,
+    age: rand(21..57),
+    password: '123123', # needs to be 6 digits,
+    full_name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+    phone_number: Faker::Config.locale = 'en-CA',
+    city: ['Kyoto', 'Tokyo', 'Yokohama', 'Nagoya', 'Osaka'].sample,
+    experience: ['An experienced trombonist and music teacher with 14 years of performance experience and eight years in music education. Studied the principles of trombone performance with Wycliffe Gordon while attending Emory University and performing with the Emory & Henry Marching Band.', 'A classical musician and graduate of The Juilliard School with eight years of experience playing the piano in large concert settings with over 20K attendees. A proven track record of performing with symphony orchestras and premiere music groups, including the Philadelphia Orchestra.', 'Enthusiastic session musician, seeking position with Jerry Norwater Music. As First Violin in the Solano Youth Orchestra, performed La Forza Del Destino Overture by G. Verdi to favorable reviews in the Daily Republic. Commended by music director for hard work and dedication.', 'A dedicated session artist with over 5 years of live performance experience seeks to join Kevin Costner Music to advance my skills while providing a great music experience to the audience. Developing a career with both Orchestra and Chamber music.', 'Dynamic teacher with over 8 years of experience in teaching high-school and bachelor’s level music students seeks to join The Juilliard School as a senior music teacher. In my previous position, I taught a range of subjects such as music composition, live performance, instruments, and sound engineering.'].sample,
+    # add any additional attributes you have on your model
+  )
   # gender options: 'all' or 'male' or 'female'
   gender = 'all'
   # age options: 'all' or '12-18' or '19-25' or '26-35' or '35-50' or '50+'
@@ -39,79 +40,75 @@ end
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-user = User.create!(
+efren = User.create!(
   full_name: 'Efren Franco',
   age: 32,
   phone_number: '080-1233-4562',
   city: 'Kyoto',
-  experience: 'played the drums with Linkin Park in 2017',
+  experience: 'played for around 9 months with Linkin Park in 2017',
   email: 'efrenrfranco@gmail.com',
   password: 'efrenfranco'
 )
 file = URI.open("https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-user.photo.attach(io: file, filename: "1.jpeg", content_type: "image/jpeg")
-user.save
+efren.photo.attach(io: file, filename: "1.jpeg", content_type: "image/jpeg")
 
-user = User.create!(
+nozomu = User.create!(
   full_name: 'Nozomu Hara',
-  age: 35,
+  age: 25,
   phone_number: '080-1233-4563',
   city: 'Yotsuya',
-  experience: 'played the electric guitar with Modern Baseball in 2019',
+  experience: 'played for almost 5 years with Modern Baseball in 2019',
   email: '555nhara@gmail.com',
   password: 'nozomuhara'
 )
 file = URI.open("https://avatars.githubusercontent.com/u/135594820?v=4")
-user.photo.attach(io: file, filename: "2.jpeg", content_type: "image/jpeg")
-user.save
+nozomu.photo.attach(io: file, filename: "2.jpeg", content_type: "image/jpeg")
 
-
-user = User.create!(
+pj = User.create!(
   full_name: 'PJ Taron',
   age: 28,
   phone_number: '080-1233-4565',
   city: 'Ootaku',
-  experience: 'played the acoustic guitar with West Life in 2017',
+  experience: 'played during 4 years with West Life in 2017',
   email: 'jadepeck27@gmail.com',
   password: 'pjtaron'
 )
 file = URI.open("https://avatars.githubusercontent.com/u/122541242?v=4")
-user.photo.attach(io: file, filename: "3.jpeg", content_type: "image/jpeg")
-user.save
+pj.photo.attach(io: file, filename: "3.jpeg", content_type: "image/jpeg")
 
-User.all.each_with_index do |user, index|
-  instruments = ['drums', 'electric guitar', 'acoustic guitar']
-  thousand = rand(5..10)
+User.all.each do
+  instruments = ['drums', 'electric guitar', 'acoustic guitar', 'piano', 'violin', 'bass', 'vocals']
+  thousand = rand(20..30)
   offering = Offering.new(
     price: thousand * 1000,
     availability: 'Monday to Friday from 8:00 to 0:00',
-    instrument: instruments[index]
+    instrument: instruments.sample
   )
-  offering.user = user
+  offering.user = User.all.sample
   offering.save
 end
 
-images = ["https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/141376/pexels-photo-141376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
-Offering.all.each do |offering|
-  day = rand(1..30)
-  hour1 = rand(8..12)
-  hour2 = rand(16..23)
-  booking = Booking.new(
-    start_date: DateTime.new(2023, 9, day, hour1),
-    end_date: DateTime.new(2023, 9, day, hour2),
-    details: "we are a band of four members that play folk rock, and we are looking someone
-    like you to join us for the next 4 months"
-  )
-  booking.offering = offering
-  booking.user = offering.user
-  booking.save
-end
+# images = ["https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/111287/pexels-photo-111287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/141376/pexels-photo-141376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"]
+# Offering.all.each do |offering|
+#   day = rand(1..30)
+#   hour1 = rand(8..12)
+#   hour2 = rand(16..23)
+#   booking = Booking.new(
+#     start_date: DateTime.new(2023, 9, day, hour1),
+#     end_date: DateTime.new(2023, 9, day, hour2),
+#     details: "we are a band of four members that play folk rock, and we are looking someone
+#     like you to join us for the next 4 months"
+#   )
+#   booking.offering = offering
+#   booking.user = offering.user
+#   booking.save
+# end
 
-  file = URI.open(images[2])
-  file1 = URI.open(images[0])
-  file2 = URI.open(images[1])
-  Offering.first.photo.attach(io:file, filename:"offering.jpeg", content_type:"image/jpeg")
-  Offering.second.photo.attach(io:file1, filename:"offering.jpeg", content_type:"image/jpeg")
-  Offering.last.photo.attach(io:file2, filename:"offering.jpeg", content_type:"image/jpeg")
+# file = URI.open(images[2])
+# file1 = URI.open(images[0])
+# file2 = URI.open(images[1])
+# Offering.first.photo.attach(io:file, filename:"offering.jpeg", content_type:"image/jpeg")
+# Offering.second.photo.attach(io:file1, filename:"offering.jpeg", content_type:"image/jpeg")
+# Offering.last.photo.attach(io:file2, filename:"offering.jpeg", content_type:"image/jpeg")
 
-puts "3 users, offerings and bookings created"
+puts "#{User.count} users created"
