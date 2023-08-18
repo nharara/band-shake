@@ -1,0 +1,13 @@
+
+  <div class="row justify-content-center">
+    <div class="col-10 d-flex justify-content-between">
+      <h2>Reviews</h2>
+      <h2>Ratings</h2>
+    </div>
+    <% @reviews.each do |review| %>
+    <div class="col-10 border p-3 my-2 d-flex justify-content-between">
+      <p> <%=review.content %></p>
+      <span><%= '🎵' * review.rating  %></span>
+    </div>
+    <% end %>
+  </div>

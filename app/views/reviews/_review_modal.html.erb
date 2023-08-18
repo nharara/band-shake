@@ -1,14 +1,10 @@
-<!-- <div class="container">
-  <%= simple_form_for [booking, @review] do |f| %>
-    <%= f.input :content, placeholder: 'write your review' %>
-    <%= f.input :rating, collection: [1, 2, 3, 4, 5], selected: 5 %>
-    <%= f.submit class: 'btn btn-primary'%>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Leave a review
+</button>
 
-  <% end %>
-</div> -->
-
-
-<div class="modal fade" id="review-<%= booking.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
