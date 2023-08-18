@@ -19,3 +19,11 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar {
+  z-index: 100
+}
+
+.navbar-brand img {
+  border-radius: 16px;
+}
