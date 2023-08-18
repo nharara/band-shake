@@ -11,6 +11,7 @@ class OfferingsController < ApplicationController
     @offerings = Offering.all
     @offering = Offering.find(params[:id])
     @booking = Booking.new
+    @reviews = @offering.reviews
   end
 
   def new
