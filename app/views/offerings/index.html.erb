@@ -25,11 +25,11 @@
           </div>
           <div>
             <p><i class="fa-solid fa-location-dot mb-2"></i> <%= offering.user.city %></p>
-            <h2 class="card-trip-pricing"><i class="fa-solid fa-yen-sign"></i><%= offering.price %></h2>
-          </div>
+            <h2 class="card-trip-pricing"></i><%= number_to_currency(offering.price, {unit: '¥', precision: 0}) %></h2>
         </div>
-        <%= link_to "", offering_path(offering), class: 'card-trip-link' %>
       </div>
-    <% end %>
-  </div>
+      <%= link_to "", offering_path(offering), class: 'card-trip-link' %>
+    </div>
+  <% end %>
+</div>
 </div>
