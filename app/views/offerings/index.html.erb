@@ -1,14 +1,20 @@
 <div class="card-container mt-3">
-  <div class="d-flex justify-content-between align-items-center">
-    <h1>Musicians</h1>
+  <h1 class="text-center">Musicians</h1>
+  <%= render "search" %>
+  <div class="d-flex justify-content-between align-items-center mt-2">
     <div data-controller="toggle">
-      <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new offer</button>
-      <div data-toggle-target="togglableElement" class="d-none">
-        <%= render "offerings/form", offering: Offering.new %>
+      <div id="offerwrapper" class="dropdown">
+        <%# <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new offer</button> %>
+        <button data-action="click->toggle#fire" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Add an offer
+        </button>
+        <div data-toggle-target="togglableElement" id="offeringform" class="d-none d-flex">
+          <%# <%= image_tag "https://images.pexels.com/photos/2079169/pexels-photo-2079169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" %>
+          <%= render "offerings/form", offering: Offering.new %>
+        </div>
       </div>
     </div>
   </div>
-  <%= render "search" %>
   <div class="cards-index">
     <% @offerings.each do |offering| %>
       <div class="card-trip mt-5">

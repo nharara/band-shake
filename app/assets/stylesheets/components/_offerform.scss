@@ -1,0 +1,11 @@
+#offerwrapper{
+  position: relative;
+  min-width: 400px;
+}
+
+#offeringform{
+  position: absolute;
+  z-index: 1;
+  min-width: 400px;
+  background-color: antiquewhite;
+}
