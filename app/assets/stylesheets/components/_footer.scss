@@ -18,6 +18,15 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  // position: fixed;
+  // /* Position it as a fixed element */
+  // left: 0;
+  // /* Stick it to the left side */
+  // right: 0;
+  // /* Stick it to the right side */
+  // bottom: 0;
+  /* Stick it to the bottom of the window */
+  flex-shrink: 0;
 }
 
 .footer-links {
@@ -39,4 +48,18 @@
 
 .footer .fa-heart {
   color: $red;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
 }
