@@ -26,6 +26,7 @@
         <li>Experience: <%= @offering.user.experience %></li>
         <li>Availabilty: <%= @offering.availability %></li>
         <li>Email: <%= @offering.user.email %></li>
+          <li>Rating: <%= @rating%> </li>
       </ul>
     </div>
   </div>
@@ -36,6 +37,8 @@
     </div>
   </div>
 </div>
-<div class="container p-2">
-  <%= render 'reviews', reviews: @reviews %>
-</div>
+<% if !@reviews.empty? %>
+  <div class="card-container mt-3">
+    <%= render 'reviews', reviews: @reviews %>
+  </div>
+  <% end %>
