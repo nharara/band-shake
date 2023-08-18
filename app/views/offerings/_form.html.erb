@@ -1,11 +1,11 @@
 <div>
   <%# <h1>Add a new Offer</h1> %>
   <%= simple_form_for offering do |f| %>
-    <%= f.input :instrument, collection: ['Piano', 'Acoustic Guitar', 'Electric guitar', 'Ukulele', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Clarinet', 'Harp']%>
-    <%= f.input :price, label: "Price per day", input_html:{ class: "rounded"} %>
-    <%= f.input :availability, placeholder: "Monday-Friday 9AM-9PM" %>
-    <%= f.input :url, label: "Youtube URL link", placeholder: "https://www.youtube.com/watch?v=XroVVJ1Rvng" %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :instrument, collection: ['Piano', 'Acoustic Guitar', 'Electric guitar', 'Ukulele', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Clarinet', 'Harp'], input_html:{ class: "input-box" }%>
+    <%= f.input :price, label: "Price per day", input_html:{ class: "input-box"} %>
+    <%= f.input :availability, placeholder: "Monday-Friday 9AM-9PM", input_html:{ class: "input-box" }%>
+    <%= f.input :url, label: "Youtube URL link", placeholder: "https://www.youtube.com/watch?v=XroVVJ1Rvng", input_html:{ class: "input-box"}  %>
+    <%= f.input :photo, as: :file, input_html:{ class: "input-box"} %>
     <%= f.submit "Submit", class: 'btn btn-primary mt-2' %>
     <%= button_tag "Cancel", class: 'btn btn-primary mt-2' %>
   <% end %>
