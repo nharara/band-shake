@@ -14,11 +14,6 @@
     <ul class="navbar-nav me-auto">
       <% if user_signed_in? %>
         <li class="nav-item d-flex align-items-center fw-light me-2 text-nowrap">
-          <%= link_to "♫", bookings_path, class: "link-index text-decoration-none", style: "color: #454F5C" %>
-        </li>
-      <% end %>
-      <% if user_signed_in? %>
-        <li class="nav-item d-flex align-items-center fw-light me-2 text-nowrap">
           Hi, <%= current_user.full_name.split.first %>
         </li>
       <% end %>
@@ -31,7 +26,8 @@
         <% end %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
-            <%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>
+            <%= link_to "My Gigs", bookings_path, class: "dropdown-item" %>
+            <%= link_to"Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>
           <% else %>
             <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
             <%= link_to "Register", new_user_registration_path, class: "dropdown-item" %>
