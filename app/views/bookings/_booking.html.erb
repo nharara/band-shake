@@ -1,7 +1,5 @@
-<li class="list-group-item d-flex justify-content-between">
-  <div class="img-container" style="max-width: 25%">
-    <img src="https://example.com/image.jpg" class="img-fluid">
-  </div>
+<div> <%= render 'reviews/new_review', booking: booking %></div>
+<li class="list-group-item d-flex justify-content-around">
   <%#   <% if booking.status == "accepted" && booking.end_date <= Time.now %>
   <%#  <%= link_to "Leave a review", reviews_path(@review), class: "btn btn-primary" %>
   <%#  <% else %>
@@ -11,10 +9,9 @@
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review-<%= booking.id%>">
     Leave a review
   </button>
-  <div> <%= render 'reviews/new_review', booking: booking %></div>
-  <div class="card border-0"><%= booking.offering.user.full_name %></div>
-  <div class="card border-0"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
-  <div class="card border-0"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
+  <div class="card border-0 flex-1"><%= booking.offering.user.full_name %></div>
+  <div class="card border-0 flex-1"><%= booking.start_date.strftime("%b %d %-l%P") %></div>
+  <div class="card border-0 flex-1"><%= booking.end_date.strftime("%b %d %-l%P") %></div>
   <% if booking.offering.user == current_user && booking.pending? %>
     <div class="d-flex">
       <%= simple_form_for booking do |f| %>
