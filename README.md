@@ -10,6 +10,7 @@
 
 <h2>Preview</h2>
 <img src='https://github.com/ahenla/band-shake/assets/126391927/35308c04-dbb0-4735-b526-6465d59c61e2' >
+[Live Demo](https://bandshake-7def081255a7.herokuapp.com/) 💾
 
 <h2>Installation</h2>
 <p>This project was built for educational reasons, so feel free to use it and modify it to your needs.</p>
